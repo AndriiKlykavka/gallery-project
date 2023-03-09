@@ -1,5 +1,6 @@
 package ua.kv.klykavka.andrii.gallaryproject.models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -82,11 +83,11 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return Objects.equals(title, post.title) && Objects.equals(description, post.description) && Objects.equals(author, post.author);
+        return Objects.equals(title, post.title) && Objects.equals(description, post.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, date, author);
+        return Objects.hash(id);
     }
 }

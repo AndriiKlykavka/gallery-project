@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ua.kv.klykavka.andrii.gallaryproject.models.Post;
 import ua.kv.klykavka.andrii.gallaryproject.repositories.PostRepository;
+
+import javax.management.Query;
 import java.time.ZonedDateTime;
 import java.util.Date;
 
@@ -24,6 +26,8 @@ public class GalleryProjectApplication implements CommandLineRunner {
 	}
 
 
+
+
 	@Override
 	public void run(String... args) throws Exception {
 		if(postRepository.findAll().isEmpty()){
@@ -34,6 +38,5 @@ public class GalleryProjectApplication implements CommandLineRunner {
 			postRepository.save(new Post("Woe Story", "Happy to find you...", new Date(), "New Ostin"));
 			postRepository.save(new Post("Dreadling Story", "3 weeks a day...", new Date(), "Lloyd Gar"));
 		}
-
 	}
 }

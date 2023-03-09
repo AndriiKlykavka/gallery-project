@@ -46,7 +46,7 @@
                 <p class="card-text" th:text="${post.description}"></p>
                 <p class="card-text" th:text="${post.author}"></p>
                 <p class="card-text" th:text="${post.date}"></p>
-                <a th:href="@{post/see}">See Post</a>
+                <a th:href="@{post/see(id=${post.id})}">See Post</a>
             </div>
         </div>
     </div>

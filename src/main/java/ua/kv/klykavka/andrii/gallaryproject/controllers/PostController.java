@@ -1,12 +1,10 @@
 package ua.kv.klykavka.andrii.gallaryproject.controllers;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ua.kv.klykavka.andrii.gallaryproject.services.PostService;
 
 @Controller
@@ -20,10 +18,9 @@ public class PostController {
         this.service = service;
     }
 
-//    @RequestMapping("/see")
-//    public String showPost(Model model) {
-//        model.addAttribute("activePost", service.getPostById("6408c662893c8628e6b17829"));
-//        System.out.println(service.getPostById("6408c662893c8628e6b17829"));
-//        return "main-page";
-//    }
+    @GetMapping("/see")
+    public String showPost(@RequestParam String id,  Model model) {
+        model.addAttribute("activePost", service.getPostById(new ObjectId(id)));
+        return "post-page";
+    }
 }
