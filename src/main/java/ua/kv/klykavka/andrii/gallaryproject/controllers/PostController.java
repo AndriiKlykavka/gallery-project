@@ -21,7 +21,7 @@ public class PostController {
 
     @GetMapping("/see")
     public String showPost(@RequestParam String id,  Model model) {
-        model.addAttribute("activePost", service.getPostById(new ObjectId(id)));
+        model.addAttribute("activePost", service.getPost(new ObjectId(id)));
         return "post-page";
     }
 
@@ -40,6 +40,19 @@ public class PostController {
     @PostMapping("/add")
     public String addPost(@ModelAttribute("newPost") Post post){
         service.addPost(post);
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit")
+    public String editPost(@RequestParam String id, Model model){
+        model.addAttribute("editedPost", service.getPost(new ObjectId(id)));
+
+        return "edit-page";
+    }
+
+    @PostMapping("/edit/confirm")
+    public String confirmEdit(@ModelAttribute("editedPost") Post post){
+        service.editPost(post);
         return "redirect:/";
     }
 }
