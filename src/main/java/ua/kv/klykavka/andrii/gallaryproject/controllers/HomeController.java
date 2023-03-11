@@ -3,7 +3,8 @@ package ua.kv.klykavka.andrii.gallaryproject.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import ua.kv.klykavka.andrii.gallaryproject.models.Post;
 import ua.kv.klykavka.andrii.gallaryproject.services.PostService;
 
 @Controller
@@ -22,6 +23,4 @@ public class HomeController {
         model.addAttribute("posts", service.getPosts());
         return "main-page";
     }
-
-
 }

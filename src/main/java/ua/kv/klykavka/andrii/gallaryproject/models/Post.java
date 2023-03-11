@@ -17,17 +17,16 @@ public class Post {
     @Field
     private String description;
     @Field
-    private Date date;
+    private Date date = new Date();
     @Field
     private String author;
 
     public Post() {
     }
 
-    public Post(String title, String description, Date date, String author) {
+    public Post(String title, String description, String author) {
         this.title = title;
         this.description = description;
-        this.date = date;
         this.author = author;
     }
 
@@ -53,10 +52,6 @@ public class Post {
 
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(String Date) {
-        this.date = date;
     }
 
     public String getAuthor() {

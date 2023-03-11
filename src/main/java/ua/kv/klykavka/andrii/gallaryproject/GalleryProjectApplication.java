@@ -7,8 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ua.kv.klykavka.andrii.gallaryproject.models.Post;
 import ua.kv.klykavka.andrii.gallaryproject.repositories.PostRepository;
 
-import javax.management.Query;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 @SpringBootApplication
@@ -31,12 +29,12 @@ public class GalleryProjectApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		if(postRepository.findAll().isEmpty()){
-			postRepository.save(new Post("River Run", "Once upon a time...", new Date(), "Andrew Kl"));
-			postRepository.save(new Post("John Story", "It was a dark dark night...", new Date(), "Roger Fe"));
-			postRepository.save(new Post("Bash Run", "Once upon a time...", new Date(), "Andrew Kl"));
-			postRepository.save(new Post("Cira Story", "Seemed so good...", new Date(), "David Fera"));
-			postRepository.save(new Post("Woe Story", "Happy to find you...", new Date(), "New Ostin"));
-			postRepository.save(new Post("Dreadling Story", "3 weeks a day...", new Date(), "Lloyd Gar"));
+			postRepository.save(new Post("River Run", "Once upon a time...", "Andrew Kl"));
+			postRepository.save(new Post("John Story", "It was a dark dark night...", "Roger Fe"));
+			postRepository.save(new Post("Bash Run", "Once upon a time...", "Andrew Kl"));
+			postRepository.save(new Post("Cira Story", "Seemed so good...", "David Fera"));
+			postRepository.save(new Post("Woe Story", "Happy to find you...", "New Ostin"));
+			postRepository.save(new Post("Gruelling Story", "3 days a week...", "Lloyd Gar"));
 		}
 	}
 }
