@@ -4,7 +4,10 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,8 +16,12 @@ public class Post {
     @Id
     private String id;
     @Field
+    @NotNull(message = "Please provide a title")
+    @Size(min = 3, max = 54, message = "Title size must be between 3 and 54 chars")
     private String title;
     @Field
+    @NotNull(message = "Please provide a post content")
+    @Size(min = 60, message = "Post content must be at least 60 chars")
     private String description;
     @Field
     private Date date = new Date();

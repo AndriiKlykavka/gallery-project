@@ -39,8 +39,10 @@
     <form th:action="@{/post/add}" th:object="${newPost}" method="post">
       <div class="mb-3">
         <label for="title" class="form-label">Input Post Title:</label>
-        <input class="form-control form-control-lg" type="text" placeholder="Title" id="title" name="title" th:value="*{title}" aria-label=".form-control-lg example" />
-      </div>
+        <input class="form-control form-control-lg" type="text" placeholder="Title" id="title" name="title" aria-label=".form-control-lg example" required
+            th:value="*{title}"
+            th:classappend="${#fields.hasErrors('title')?'is-invalid':''}"/>
+        <p class="invalid-feedback" th:each="e : ${#fields.errors('title')}" th:text="${e}"></p>
 
       <div class="mb-3">
         <label for="formFile" class="form-label">Upload Image:</label>
@@ -49,7 +51,11 @@
 
       <div class="mb-3">
         <label for="description" class="form-label">Input Post Text:</label>
-        <textarea class="form-control" id="description" rows="6" name="description" th:value="*{description}"></textarea>
+        <textarea class="form-control" id="description" rows="6" name="description"
+                  th:value="*{description}"
+                  th:classappend="${#fields.hasErrors('description')?'is-invalid':''}"></textarea>
+        <p class="invalid-feedback" th:each="e : ${#fields.errors('description')}" th:text="${e}"></p>
+
       </div>
       <input class="form-control" type="text" placeholder="Andrii Klykavka" id="author"  th:value="*{author}" aria-label="Disabled input example" style="margin-bottom: 1.5rem" disabled>
       <button type="submit" class="btn btn-primary">Submit</button>

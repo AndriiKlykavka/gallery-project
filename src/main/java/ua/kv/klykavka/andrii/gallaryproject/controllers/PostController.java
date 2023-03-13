@@ -4,9 +4,12 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ua.kv.klykavka.andrii.gallaryproject.models.Post;
 import ua.kv.klykavka.andrii.gallaryproject.services.PostService;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/post")
@@ -38,7 +41,11 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public String addPost(@ModelAttribute("newPost") Post post){
+    public String addPost(@Valid @ModelAttribute("newPost") Post post, BindingResult result){
+        if(result.hasErrors()){
+            return "add-page";
+        }
+
         service.addPost(post);
         return "redirect:/";
     }

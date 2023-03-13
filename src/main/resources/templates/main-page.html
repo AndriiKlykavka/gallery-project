@@ -18,13 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: space-between">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/post/create}">Create</a>
+                </li>
+                <li th:if="${confirmedUser}" class="nav-item">
+                    <a class="nav-link" th:text="${confirmedUser?.name}" th:href="@{/user/profile}"></a>
+                </li>
+                <li th:unless="${confirmedUser}" class="nav-item">
+                    <a class="nav-link" th:href="@{/user/registration}">SignUp</a>
                 </li>
             </ul>
             <div class="container-fluid" style="margin-left: 600px">
