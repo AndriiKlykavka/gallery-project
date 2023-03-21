@@ -21,7 +21,7 @@ public class Post {
     private String title;
     @Field
     @NotNull(message = "Please provide a post content")
-    @Size(min = 60, message = "Post content must be at least 60 chars")
+    @Size(min = 15  , message = "Post content must be at least 15 chars")
     private String description;
     @Field
     private Date date = new Date();

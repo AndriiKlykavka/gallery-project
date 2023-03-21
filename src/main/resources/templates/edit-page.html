@@ -47,7 +47,11 @@
     <div class="mb-3">
       <label for="title" class="form-label">Input Post Title:</label>
       <input class="form-control form-control-lg" type="text" placeholder="Title" id="title" name="title"
-             th:value="*{title}" th:text="*{title}" aria-label=".form-control-lg example" />
+             th:value="*{title}"
+             
+             th:classappend="${#fields.hasErrors('title')?'is-invalid':''}"
+             aria-label=".form-control-lg example" />
+      <p class="invalid-feedback" th:each="e : ${#fields.errors('title')}" th:text="${e}"></p>
     </div>
 
     <div class="mb-3">
@@ -57,8 +61,11 @@
 
     <div class="mb-3">
       <label for="description" class="form-label">Input Post Text:</label>
-      <textarea class="form-control form-control-lg" rows="6" placeholder="Description" id="description" name="description"
-                th:value="*{description}" th:text="*{description}"></textarea>
+      <textarea class="form-control form-control-lg" rows="6" placeholder="Post content..." id="description" name="description"
+                th:value="*{description}"
+                th:text="*{description}"
+                th:classappend="${#fields.hasErrors('description')?'is-invalid':''}"></textarea>
+      <p class="invalid-feedback" th:each="e : ${#fields.errors('description')}" th:text="${e}"></p>
     </div>
 
     <input class="form-control" type="text" id="author" name="author"

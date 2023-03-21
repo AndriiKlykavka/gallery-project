@@ -58,7 +58,10 @@ public class PostController {
     }
 
     @PostMapping("/edit/confirm")
-    public String confirmEdit(@ModelAttribute("editedPost") Post post){
+    public String confirmEdit(@Valid @ModelAttribute("editedPost") Post post, BindingResult result){
+        if(result.hasErrors()){
+            return "edit-page";
+        }
         service.editPost(post);
         return "redirect:/";
     }
